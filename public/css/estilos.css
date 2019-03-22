@@ -1,0 +1,30 @@
+.frase {
+  font-size: 1.5em;
+  text-align: justify;
+}
+
+.campo-digitacao {
+  font-size: 1.5em;
+  height: 6em;
+  border: 3px solid black;
+}
+
+.campo-bloqueado {
+  background-color: lightgray;
+}
+
+.campo-aberto {
+  background-color: inherit;
+}
+
+.icones {
+  vertical-align: middle;
+}
+
+.campo-correto{
+  border-color: green;
+}
+
+.campo-errado{
+  border-color: red;
+}
