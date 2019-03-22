@@ -51,9 +51,11 @@ function inicializaContadores(){
 function inicializaMarcadores() {
     campoDigitacao.on("input", () => {
         var digitado = campoDigitacao.val();
-        var comparavel = $('.frase').text().substr(0, digitado.length);
-        campoDigitacao.addClass((digitado == comparavel) ? "campo-correto" : "campo-errado");
-        campoDigitacao.removeClass((digitado == comparavel) ? "campo-errado" : "campo-correto");
+        var comparavel = $('.frase').text();
+        campoDigitacao.toggleClass("campo-correto", (comparavel.startsWith(digitado)));
+        campoDigitacao.toggleClass("campo-errado", !(comparavel.startsWith(digitado)));
+        //campoDigitacao.addClass((digitado == comparavel) ? "campo-correto" : "campo-errado");
+        //campoDigitacao.removeClass((digitado == comparavel) ? "campo-errado" : "campo-correto");
     });
 }
 
