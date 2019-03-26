@@ -15,7 +15,8 @@ var frases = [
 	];
 
 api.lista = function(req, res) {
-
+	res.setHeader("Access-Control-Allow-Origin", "*")
+	
 	setTimeout(function(){
 		if(req.query.id) return res.json(frases[req.query.id]);
 

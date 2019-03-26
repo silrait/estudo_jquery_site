@@ -1,5 +1,4 @@
-const tempoInicial = 10;
-
+var tempoInicial = 10;
 var campoTamanho = $("#tamanho-frase");
 var campoDigitacao = $(".campo-digitacao");
 var tempoRestante = $("#tempo-digitacao");
@@ -10,14 +9,14 @@ var contadorCaracteres = $("#contador-caracteres");
 tempoRestante.text(tempoInicial);
 
 $(()=> {
-  autalizaTamanhoFrase();
+  atualizaTamanhoFrase();
   inicializaCronometro();
   inicializaContadores();
   inicializaMarcadores();
   botaoIniciar.click(reiniciaJogo);
 });
 
-function autalizaTamanhoFrase(){
+function atualizaTamanhoFrase(){
     var frase = $('.frase').text();
     var numPalavras = frase.split(" ").length;
     campoTamanho.text(numPalavras);
@@ -65,11 +64,12 @@ function inicializaMarcadores() {
 function reiniciaJogo(){
   campoDigitacao.attr("disabled", false);
   campoDigitacao.val("");
-  campoDigitacao.toggleClass("campo-bloqueado");
+  campoDigitacao.removeClass("campo-bloqueado");
   campoDigitacao.removeClass("campo-correto");
   campoDigitacao.removeClass("campo-errado");
   contadorPalavras.text("0");
   contadorCaracteres.text("0");
   tempoRestante.text(tempoInicial);
   inicializaCronometro();
+  fechaPlacar();
 }
