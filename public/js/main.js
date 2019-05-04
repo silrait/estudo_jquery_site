@@ -14,6 +14,8 @@ $(()=> {
   inicializaContadores();
   inicializaMarcadores();
   botaoIniciar.click(reiniciaJogo);
+
+  atualizaPlacar();
 });
 
 function atualizaTamanhoFrase(){

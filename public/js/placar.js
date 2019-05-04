@@ -1,7 +1,42 @@
 $('#botao-placar').click(mostraPlacar)
+$("#botao-sync").click(sincronizaPlacar);
+
+function atualizaPlacar(){
+  $.get({
+    url: "http://localhost:3000/placar",
+    success(data) {
+      const tbody = $(".placar").find("tbody");
+      data.forEach( ({usuario, pontos}) =>{
+        tbody.prepend(novaLinha(usuario, pontos));
+      })
+
+      $('.placar').slideDown(600);
+      scrollPlacar();
+    },
+  })
+}
+
+function sincronizaPlacar(){
+  var placar = []
+  var linhas = $("tbody>tr");
+
+  linhas.each( function(){
+    placar.push({
+      usuario : $(this).find("td:nth-child(1)").text(),
+      pontos: $(this).find("td:nth-child(2)").text(),
+    });
+  });
+
+  const dados = {placar};
+  console.log(dados);
+
+  $.post("http://localhost:3000/placar", {placar}, () =>{
+    console.log("Placar sincronizado com sucesso");
+  })
+}
 
 function mostraPlacar() {
-  //stop() diz para o jquery para animação
+  //stop() diz para o jquery parar animação
   //que estiver fazendo para começar uma nova
   //e não criar uma cadeia de animações
   $('.placar').stop().slideToggle(600)
